@@ -46,7 +46,7 @@ label {
   font-family: Helvetica, Geneva, Arial, sans-serif;
   padding-left: 20px;
   background-color: #FFFFFF; /* beige */
-  font-color: #2A2929; /* dark grey */
+  font-color: #2c2e33; /* dark grey */
   margin: 10px;
 }
 a:link{
@@ -54,15 +54,15 @@ a:link{
   text-decoration:none;
 }
 a:hover {
-  color:#cd7f32; /* light bronze */
+  color:#4994da; /* light green */
 }
 h1 {
-  color: #d69544; /* bronze */
+  color: #0372da; /* blue */
   font-size: 200%;
   margin: 20px;
 }
 form {
-  border: 2px solid #d69544; /* bronze */
+  border: 2px solid #0372da; /* blue */
   border-radius: 10px;
   overflow: hidden;
   margin: 5px;
