@@ -61,11 +61,15 @@ def processSignup():
     fields = ['nickname', 'email', 'passwd', 'confirm', 'signup_submit']
     for field in fields:
         value = request.form.get(field, None)
+        session[field] = value
         if value is None:
             missing.append(field)
     if missing:
         return "Warning: Some fields are missing"
-
+    else:
+        session['messages'] = ''
+        session['friends'] = ''
+        save_current_user()
     return '<!DOCTYPE html> ' \
            '<html lang="es">' \
            '<head>' \
@@ -139,9 +143,10 @@ def load_user(email, passwd):
     return redirect(url_for("home"))
 
 def save_current_user():
+   
     datos = {
-        "user_name": session["user_name"],
-        "password": session['password'],
+        "user_name": session["nickname"],
+        "password": session['passwd'],
         "messages": session['messages'], # lista de tuplas (time_stamp, mensaje)
         "email": session['email'],
         "friends": session['friends']
@@ -194,7 +199,8 @@ def process_error(message, next_page):
     :return:
     """
     return render_template("error.html", error_message=message, next=next_page)
-# app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+SITE_ROOT = './'
 # start the server with the 'run()' method
 if __name__ == '__main__':
     app.run(debug=True, port=55555)
